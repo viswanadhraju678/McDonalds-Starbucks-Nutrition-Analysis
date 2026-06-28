@@ -1,15 +1,16 @@
 # 🍔☕ McDonald's vs Starbucks Nutrition Analysis using PySpark
 
+
+## 📊 PySpark Data Analysis | Data Cleaning | Data Engineering | Nutritional Analytics
+
+🚀 End-to-End Nutritional Data Analysis Project built using PySpark to compare the nutritional characteristics of menu items from McDonald's and Starbucks.
+
 ![PySpark](https://img.shields.io/badge/PySpark-Data%20Processing-orange)
 ![Python](https://img.shields.io/badge/Python-Programming-blue)
 ![EDA](https://img.shields.io/badge/EDA-Analytics-green)
 ![Data Cleaning](https://img.shields.io/badge/Data-Cleaning-yellow)
 ![Data Engineering](https://img.shields.io/badge/Data-Engineering-red)
 ![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black)
-
-## 📊 PySpark Data Analysis | Data Cleaning | Data Engineering | Nutritional Analytics
-
-🚀 End-to-End Nutritional Data Analysis Project built using PySpark to compare the nutritional characteristics of menu items from McDonald's and Starbucks.
 
 ---
 
