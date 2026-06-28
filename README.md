@@ -1,90 +1,148 @@
-# McDonald's vs Starbucks Nutrition Analysis using PySpark
+# 🍔☕ McDonald's vs Starbucks Nutrition Analysis using PySpark
 
-## Project Overview
+![PySpark](https://img.shields.io/badge/PySpark-Data%20Processing-orange)
+![Python](https://img.shields.io/badge/Python-Programming-blue)
+![EDA](https://img.shields.io/badge/EDA-Analytics-green)
+![Data Cleaning](https://img.shields.io/badge/Data-Cleaning-yellow)
+![Data Engineering](https://img.shields.io/badge/Data-Engineering-red)
+![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black)
 
-This project analyzes and compares the nutritional characteristics of menu items from McDonald's and Starbucks using PySpark.
+## 📊 PySpark Data Analysis | Data Cleaning | Data Engineering | Nutritional Analytics
 
-The objective was to evaluate nutritional differences between the two brands by analyzing calories, fat, carbohydrates, fiber, sugars, protein, sodium, and caffeine. The project demonstrates practical data engineering and analytical skills including data profiling, data cleaning, schema standardization, dataset integration, exploratory data analysis (EDA), and nutritional comparison reporting.
-
----
-
-## Business Problem
-
-Consumers often assume one fast-food brand is healthier than another. However, nutritional quality depends on multiple factors such as calories, fat, sugar, sodium, carbohydrates, fiber, and protein.
-
-This project investigates:
-
-* Which brand offers lower-calorie products?
-* Which brand contains less sugar and sodium?
-* Which brand provides higher protein content?
-* How do food products compare separately from beverage products?
-* Can data engineering techniques be used to build a reliable nutritional comparison framework?
+🚀 End-to-End Nutritional Data Analysis Project built using PySpark to compare the nutritional characteristics of menu items from McDonald's and Starbucks.
 
 ---
 
-## Technologies Used
+# 📌 Project Overview
 
-* Python
-* PySpark
-* Pandas
-* Jupyter Notebook
-* Git
-* GitHub
+Consumers often judge the healthiness of a food item solely based on calories. However, nutritional health depends on several factors including:
 
----
+* Calories
+* Fat
+* Carbohydrates
+* Fiber
+* Sugars
+* Protein
+* Sodium
 
-## Dataset Overview
+This project analyzes and compares menu items from McDonald's and Starbucks to identify nutritional differences between their food and beverage products.
 
-Four nutritional datasets were used in this analysis.
+The project demonstrates real-world data engineering skills, including:
 
-| Dataset               | Records | Description                                                        |
-| --------------------- | ------- | ------------------------------------------------------------------ |
-| mcd.csv               | 260     | McDonald's food and beverage nutritional information               |
-| sb_drinks.csv         | 177     | Starbucks drinks dataset                                           |
-| sb_drink_expanded.csv | 242     | Detailed Starbucks beverage dataset including caffeine information |
-| sb_food.csv           | 113     | Starbucks food products dataset                                    |
-
-### Data Quality Issues Identified
-
-During the profiling stage, several data quality issues were identified:
-
-* 22 duplicate records in sb_drinks.csv
-* Missing caffeine values
-* Placeholder values represented as "-"
-* Mixed categorical values such as "Varies" and "varies"
-* Different schemas and attribute names across datasets
+* Dataset Profiling
+* Data Cleaning
+* Schema Standardization
+* Dataset Integration
+* Exploratory Data Analysis
+* Data Aggregation
+* Business Insight Generation
 
 ---
 
-## Data Engineering Workflow
+# 🎯 Business Problem
 
-### Step 1 – Dataset Profiling
+Fast-food and coffee chains provide large amounts of nutritional information, but comparing products across brands is difficult because datasets often contain:
 
-Performed comprehensive profiling on all datasets, including:
+* Different schemas
+* Missing values
+* Duplicate records
+* Different naming conventions
+* Inconsistent nutritional attributes
 
-* Row and column count analysis
+The objective of this project was to build a unified analytical dataset and perform a comparative nutritional analysis using PySpark.
+
+---
+
+# 🛠 Technologies Used
+
+| Technology       | Purpose                     |
+| ---------------- | --------------------------- |
+| Python           | Programming Language        |
+| PySpark          | Large-scale Data Processing |
+| Jupyter Notebook | Development Environment     |
+| Pandas           | CSV Handling                |
+| Git              | Version Control             |
+| GitHub           | Project Portfolio           |
+
+---
+
+# 📂 Datasets Used
+
+The project utilized four datasets.
+
+## McDonald's Dataset
+
+* mcd.csv
+
+Contains nutritional information for:
+
+* Burgers
+* Breakfast meals
+* Sandwiches
+* Desserts
+* Snacks
+* Beverages
+
+---
+
+## Starbucks Datasets
+
+* sb_food.csv
+* sb_drinks.csv
+* sb_drink_expanded.csv
+
+These datasets contain:
+
+* Food nutritional information
+* Beverage nutritional information
+* Expanded nutritional information including caffeine and vitamin data
+
+---
+
+# 🏗 Project Workflow
+
+## Step 1: Dataset Profiling
+
+Performed:
+
+* Row and column analysis
 * Schema inspection
+* Duplicate detection
+* Missing value analysis
 * Data type validation
-* Duplicate record detection
-* Missing value identification
-* Dataset structure analysis
 
-### Step 2 – Data Cleaning and Standardization
+### Key Findings
 
-Implemented multiple data quality improvements:
+| Dataset               | Duplicate Records |
+| --------------------- | ----------------- |
+| mcd.csv               | 0                 |
+| sb_food.csv           | 0                 |
+| sb_drink_expanded.csv | 0                 |
+| sb_drinks.csv         | 22                |
 
-* Removed 22 duplicate records from Starbucks drinks dataset
-* Replaced placeholder "-" values with NULL
-* Renamed inconsistent column names
-* Converted nutritional attributes into numeric data types
-* Preserved valid categorical caffeine values ("Varies")
-* Standardized attribute formats across datasets
+Additional findings:
 
-### Step 3 – Common Schema Creation
+* One missing caffeine value detected.
+* Placeholder values (`-`) identified.
+* Mixed categorical values (`Varies`, `varies`) identified.
 
-Designed a unified schema to enable comparison across all datasets.
+---
 
-Common schema fields:
+## Step 2: Data Cleaning & Standardization
+
+Performed:
+
+* Renamed `Unnamed:0` to `Item_Name`
+* Replaced `-` values with NULL
+* Converted nutritional columns into numeric data types
+* Removed duplicate records
+* Preserved caffeine values recorded as `Varies`
+
+---
+
+## Step 3: Common Schema Creation
+
+A unified schema was created containing:
 
 * Brand
 * Source_File
@@ -99,189 +157,193 @@ Common schema fields:
 * Sodium
 * Caffeine
 
-### Step 4 – Dataset Integration
+All datasets were integrated into:
 
-All cleaned datasets were merged into a master analytical dataset.
+```python
+master_nutrition_df
+```
+
+---
+
+## Step 4: Exploratory Data Analysis (EDA)
 
 Final dataset composition:
 
-| Brand      | Records |
-| ---------- | ------- |
-| McDonald's | 260     |
-| Starbucks  | 510     |
-| Total      | 770     |
+| Brand     | Total Records |
+| --------- | ------------- |
+| McDonalds | 260           |
+| Starbucks | 510           |
+| Total     | 770           |
 
-### Step 5 – Exploratory Data Analysis
+EDA included:
 
-Performed:
-
-* Brand-level nutritional analysis
-* Source-file analysis
-* Missing value assessment
-* Nutritional aggregations
-* Food vs beverage comparison
+* Dataset composition analysis
+* Missing value analysis
+* Nutritional aggregation
+* Schema validation
 * Product category analysis
-* Overall health-oriented nutritional evaluation
 
 ---
 
-## Key Results
+# 📈 Product Type Distribution
 
-### Product Distribution
-
-| Brand      | Food Items | Drink Items |
-| ---------- | ---------- | ----------- |
-| McDonald's | 110        | 150         |
-| Starbucks  | 113        | 397         |
-
----
-
-### Beverage Comparison
-
-| Metric            | McDonald's | Starbucks |
-| ----------------- | ---------- | --------- |
-| Avg Calories      | 299.47     | 180.38    |
-| Avg Fat           | 7.73       | 2.85      |
-| Avg Carbohydrates | 50.27      | 104.05    |
-| Avg Sugars        | 44.64      | 32.96     |
-| Avg Sodium        | 128.43     | 20.00     |
-
-#### Key Findings
-
-* Starbucks beverages contained significantly fewer calories.
-* Starbucks beverages contained lower fat levels.
-* Starbucks beverages contained lower sugar content.
-* Starbucks beverages contained substantially lower sodium levels.
-* McDonald's beverages contained slightly higher protein levels.
+| Brand     | Product Type | Count |
+| --------- | ------------ | ----- |
+| McDonalds | Drink        | 150   |
+| McDonalds | Food         | 110   |
+| Starbucks | Drink        | 397   |
+| Starbucks | Food         | 113   |
 
 ---
 
-### Food Comparison
+# 🥤 Drinks Comparison
 
-| Metric            | McDonald's | Starbucks |
-| ----------------- | ---------- | --------- |
-| Avg Calories      | 462.09     | 356.64    |
-| Avg Fat           | 22.94      | 16.35     |
-| Avg Carbohydrates | 43.36      | 41.49     |
-| Avg Protein       | 20.78      | 11.47     |
+| Brand     | Avg Calories | Avg Fat | Avg Carbohydrates | Avg Sugars | Avg Sodium |
+| --------- | ------------ | ------- | ----------------- | ---------- | ---------- |
+| McDonalds | 299.47       | 7.73    | 50.27             | 44.64      | 128.43     |
+| Starbucks | 180.38       | 2.85    | 104.05            | 32.96      | 20.00      |
 
-#### Key Findings
+### Key Findings
 
-* Starbucks food products contained fewer calories.
-* Starbucks food products contained lower fat levels.
-* McDonald's food products provided significantly higher protein content.
-* Fiber values were relatively similar across both brands.
+✅ Starbucks beverages contain:
 
----
+* Lower calories
+* Lower fat
+* Lower sugar levels
+* Significantly lower sodium
 
-### Overall Brand Comparison
+✅ McDonald's beverages contain:
 
-| Metric       | McDonald's | Starbucks |
-| ------------ | ---------- | --------- |
-| Avg Calories | 368.27     | 226.70    |
-| Avg Fat      | 14.17      | 6.40      |
-| Avg Sugars   | 29.42      | 32.96     |
-| Avg Protein  | 13.34      | 7.77      |
+* Slightly higher protein levels
 
 ---
 
-## Challenges Solved
+# 🍔 Food Comparison
 
-### Duplicate Data Handling
+| Brand     | Avg Calories | Avg Fat | Avg Carbohydrates | Avg Protein | Avg Sodium |
+| --------- | ------------ | ------- | ----------------- | ----------- | ---------- |
+| McDonalds | 462.09       | 22.94   | 43.36             | 20.78       | 996.64     |
+| Starbucks | 356.64       | 16.35   | 41.49             | 11.47       | N/A        |
 
-Identified and removed 22 duplicate records from the Starbucks drinks dataset to prevent biased nutritional calculations.
+### Key Findings
 
-### Missing Value Management
+✅ Starbucks food products contain:
 
-Handled missing nutritional attributes while preserving data integrity and avoiding artificial data imputation.
+* Lower calories
+* Lower fat
 
-### Schema Integration
+✅ McDonald's food products contain:
 
-Designed and implemented a common schema capable of integrating four heterogeneous datasets.
-
-### Data Standardization
-
-Resolved inconsistent column names, formats, and attribute structures across multiple sources.
-
-### Fair Comparison Design
-
-Separated food and beverage analyses to avoid misleading conclusions and improve analytical validity.
+* Higher protein levels
 
 ---
 
-## Business Insights
+# 📊 Overall Brand Comparison
 
-The analysis demonstrates that nutritional comparisons cannot rely on a single metric.
-
-Key observations:
-
-* Starbucks generally performed better for calorie control and sodium reduction.
-* Starbucks beverages showed lower sugar levels than McDonald's beverages.
-* McDonald's food products offered higher protein content.
-* Different nutritional priorities lead to different conclusions regarding healthiness.
-
-This highlights the importance of evaluating multiple nutritional dimensions simultaneously.
+| Brand     | Avg Calories | Avg Fat | Avg Sugars | Avg Protein |
+| --------- | ------------ | ------- | ---------- | ----------- |
+| McDonalds | 368.27       | 14.17   | 29.42      | 13.34       |
+| Starbucks | 226.70       | 6.40    | 32.96      | 7.77        |
 
 ---
 
-## Sample Outputs
+# ⚠ Challenges Faced
 
-The project generated multiple analytical outputs including:
+### Challenge 1: Different Dataset Schemas
 
-* Dataset profiling results
-* Duplicate analysis reports
-* Missing value assessments
-* Nutritional aggregation reports
-* Brand-level comparisons
-* Food versus beverage analysis
-* Overall nutritional evaluations
+The four datasets contained different column names and structures.
 
-Screenshots of selected outputs are available in the **screenshots** folder.
+**Solution:** Created a common schema and standardized all columns.
 
 ---
 
-## Repository Structure
+### Challenge 2: Duplicate Records
+
+The Starbucks drinks dataset contained 22 duplicate records.
+
+**Solution:** Performed duplicate detection and removed duplicates before analysis.
+
+---
+
+### Challenge 3: Missing Values
+
+Several nutritional attributes were unavailable in some datasets.
+
+**Solution:** Preserved missing values as NULL instead of replacing them with artificial values.
+
+---
+
+### Challenge 4: Mixed Caffeine Values
+
+The caffeine column contained:
+
+* Numeric values
+* `Varies`
+* `varies`
+* NULL values
+
+**Solution:** Preserved categorical values rather than incorrectly converting them.
+
+---
+
+# 💡 Business Insights
+
+* Starbucks beverages generally contain fewer calories and significantly lower sodium levels.
+* McDonald's food products provide higher protein content.
+* No single nutritional metric determines whether a product is healthy.
+* Nutritional evaluation should consider multiple attributes simultaneously.
+
+---
+
+# 📁 Repository Structure
 
 ```text
 McDonalds-Starbucks-Nutrition-Analysis
 │
 ├── data/
-│   └── Dataset descriptions and metadata
-│
 ├── notebooks/
 │   └── Nutritional_Snack_analysis.ipynb
 │
 ├── reports/
 │   ├── Analysis_Report.pdf
-│   └── Analysis_Report.docx
+│   └── Challenges_and_Solutions.pdf
 │
 ├── screenshots/
-│   └── Output screenshots
 │
 └── README.md
 ```
 
 ---
 
-## Key Skills Demonstrated
+# 🚀 Skills Demonstrated
 
 * PySpark DataFrames
 * Data Profiling
 * Data Cleaning
-* Missing Value Handling
-* Duplicate Detection
-* Schema Standardization
-* Dataset Integration
+* Data Transformation
+* Data Standardization
 * Exploratory Data Analysis
 * Data Aggregation
-* Business Reporting
-* Data Quality Assessment
-* Analytical Problem Solving
+* Problem Solving
+* Documentation
+* Git & GitHub
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-### Viswanadh.G
+**Viswanadh Raju**
 
-Data Engineering Enthusiast with hands-on experience in SQL, Python, PySpark, Azure Data Factory, Azure SQL Database, Azure Synapse Analytics, ETL pipelines, data cleaning, and analytical reporting.
+Aspiring Data Engineer passionate about:
+
+* Data Engineering
+* PySpark
+* Azure
+* SQL
+* ETL Pipelines
+* Data Analytics
+* Cloud Technologies
+
+---
+
+⭐ If you found this project useful, feel free to explore the repository and connect.
